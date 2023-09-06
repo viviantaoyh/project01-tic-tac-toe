@@ -10,13 +10,18 @@
 
     <header>
         <h1>Tic-Tac-Toe</h1>
+
+        <div class="counter-bar">
+            <h2>Player O: <span class="count-O">0</span></h2>
+            <h2>Ties: <span class="count-tie">0</span></h2>
+            <h2>Player X: <span class="count-X">0</span></h2>
+        </div>
+        
+        <h3>Player <span class="turn">O</span>'s Turn</h3>
+        
+        <h2 class="rounds">Round <span>1</span></h2>
     </header>
 
-    <div class="counter-bar">
-        <h2>Player O: <span class="count-O">0</span></h2>
-        <h2>Ties: <span class="count-tie">0</span></h2>
-        <h2>Player X: <span class="count-X">0</span></h2>
-    </div>
 
     <main class="grid-wrapper">
         <button data-num="0" class="btn"></button>
@@ -30,7 +35,7 @@
         <button data-num="8" class="btn"></button>
     </main>
 
-    <h2 class="message"></h2>
+    <h2 class="hide">Congrats!</h2>
 
     <p>
         <button class="reset">Restart</button>
