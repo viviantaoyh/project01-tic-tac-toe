@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tic-Tac-Toe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link
     rel="stylesheet"
@@ -13,7 +16,7 @@
 <body>
 
     <header>
-        <h1 class="animate__animated animate__bounce">Tic-Tac-Toe</h1>
+        <img src="https://frenify.com/work/envato/frenify/wp/xoxo/intro/img/logo.png" alt="">
 
         <div class="counter-bar">
             <h2>Player O: <span class="count-O">0</span></h2>
@@ -22,11 +25,12 @@
         </div>
     </header>
 
-    <div>
+    <div class="countRounds">
         <h2 class="rounds">Round <span>1</span></h2>
-
         <h3>Player <span class="turn">O</span>'s Turn</h3>
     </div>
+
+    <h3 class="congrats hide">Congrats!</h3>
 
     <main class="grid-wrapper">
         <button data-num="0" class="btn"></button>
@@ -40,12 +44,10 @@
         <button data-num="8" class="btn"></button>
     </main>
 
-    <h2 class="hide">Congrats!</h2>
-
+    <div class="bottom">
+        <button class="reset hide">Restart</button>
+    </div>
     
-    <button class="reset hide">Restart</button>
-    
-
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,12 +1,11 @@
 * {
     box-sizing: border-box;
-    /* border: 1px solid red; */
 }
 
 :root {
     --color: #fff5cf;
     --color-set: pink;
-    --font-size: 20px;
+    --font-size: 25px;
 }
 
 body {
@@ -15,29 +14,31 @@ body {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    background-color: var(--color);
-    font-family: Arial, Helvetica, sans-serif;
+    background: url(https://st3.depositphotos.com/5664698/15895/v/1600/depositphotos_158957388-stock-illustration-vector-cute-rock-n-roll.jpg);
+    background-size: cover;
+    font-family: 'New Rocker', cursive;
     font-size: var(--font-size);
     text-align: center;
 }
 
 header {
-    background-color: var(--color-set);
+    background-color: var(--color);
     width: 100%;
-    border-bottom: 1px solid black;
+    border-bottom: 5px solid black;
 }
 
-h1 {
-    margin: 20px 0px 10px 0px;
+
+img {
+    width: 400px;
+    height: 150px;
+    margin: 10px 0px 5px 0px;
     animation: bounce; 
     animation-duration: 2s;
-    font-size: 3em;
 }
 
 .counter-bar {
     display: flex;
     flex-direction: row;
-    align-content: center;
     justify-content: center;
     gap: 70px;
 }
@@ -46,12 +47,23 @@ h1 {
     margin: 10px 0px 20px 0px;
 }
 
+.countRounds {
+    display: flex; 
+    align-items: center;
+    gap: 30px;
+}
+
 .rounds {
-    margin: 40px 0px 0px 0px;
+    font-size: 1.8em;
+    margin-bottom: 0px;
 }
 
 h3 {
-    margin: 15px 0px 20px 0px;
+    margin: 40px 0px 0px 0px;
+}
+
+.congrats {
+    margin: 10px 0px 5px 0px;
 }
 
 .grid-wrapper {
@@ -71,16 +83,18 @@ h3 {
     width: 166px;
     height: 166px;
     cursor: pointer;
+    font-family: 'New Rocker', cursive;
 }
 
 .reset {
-    background-color: var(--color-set);
-    width: 130px;
-    height:50px;
+    background-color: greenyellow;
+    width: 180px;
+    height: 60px;
     border-radius: 5px;
     border: 1px solid black;
     font-size: 1.3em;
-    margin-bottom: 10px;
+    margin: 70px 0px 10px 0px;
+    font-family: 'New Rocker', cursive;
 }
 
 .hide {

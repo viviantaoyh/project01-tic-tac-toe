@@ -3,7 +3,7 @@ console.log('tic-tac-toe')
 // Global Variables =========================================
 
 const buttons = document.querySelectorAll('.grid-wrapper .btn')
-const congratsMessage = document.querySelector('.hide');
+const congratsMessage = document.querySelector('.congrats');
 const resetBtn = document.querySelector('.reset');
 const counterO = document.querySelector('.count-O');
 const counterTie = document.querySelector('.count-tie');
