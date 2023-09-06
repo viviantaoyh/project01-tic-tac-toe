@@ -48,6 +48,8 @@ function handleClick(event){
             congratsMessage.innerHTML = `It's a tie!`;
             congratsMessage.classList.add('show');
             congratsMessage.classList.remove('hide');
+            turnMessage.classList.remove('show');
+            turnMessage.classList.add('hide');
             tieCount++;
             counterTie.innerHTML = tieCount;
         }
@@ -87,7 +89,6 @@ function handleReset(){
     rounds++;
     roundCounter.innerHTML = rounds;
 }
-
 
 
 // To visualise the grid:
