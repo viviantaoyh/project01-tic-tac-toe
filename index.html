@@ -5,23 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 <body>
 
     <header>
-        <h1>Tic-Tac-Toe</h1>
+        <h1 class="animate__animated animate__bounce">Tic-Tac-Toe</h1>
 
         <div class="counter-bar">
             <h2>Player O: <span class="count-O">0</span></h2>
             <h2>Ties: <span class="count-tie">0</span></h2>
             <h2>Player X: <span class="count-X">0</span></h2>
         </div>
-        
+    </header>
+
+    <div>
         <h2 class="rounds">Round <span>1</span></h2>
 
         <h3>Player <span class="turn">O</span>'s Turn</h3>
-    </header>
-
+    </div>
 
     <main class="grid-wrapper">
         <button data-num="0" class="btn"></button>
@@ -38,7 +43,7 @@
     <h2 class="hide">Congrats!</h2>
 
     
-    <button class="reset">Restart</button>
+    <button class="reset hide">Restart</button>
     
 
     <script src="script.js"></script>

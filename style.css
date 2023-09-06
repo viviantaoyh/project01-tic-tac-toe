@@ -4,8 +4,8 @@
 }
 
 :root {
-    --color: lightyellow;
-    --color-set: lightpink;
+    --color: #fff5cf;
+    --color-set: pink;
     --font-size: 20px;
 }
 
@@ -18,20 +18,28 @@ body {
     background-color: var(--color);
     font-family: Arial, Helvetica, sans-serif;
     font-size: var(--font-size);
-}
-
-header {
     text-align: center;
 }
 
+header {
+    background-color: var(--color-set);
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
 h1 {
-    margin: 10px 0px;
+    margin: 20px 0px 10px 0px;
+    animation: bounce; 
+    animation-duration: 2s;
+    font-size: 3em;
 }
 
 .counter-bar {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    align-content: center;
+    justify-content: center;
+    gap: 70px;
 }
 
 .counter-bar h2 {
@@ -39,13 +47,12 @@ h1 {
 }
 
 .rounds {
-    margin-bottom: 10px;
+    margin: 40px 0px 0px 0px;
 }
 
-header h3 {
-    margin: 10px 0px;
+h3 {
+    margin: 15px 0px 20px 0px;
 }
-
 
 .grid-wrapper {
     display: grid;
@@ -53,25 +60,26 @@ header h3 {
     width: 500px;
     height: 500px;
     grid-gap: 5px;
-    margin-top: 20px;
 }
 
 .btn {
     border: 1px solid black;
+    border-radius: 10px;
     text-align: center;
     background-color: var(--color-set);
     font-size: 3em;
     width: 166px;
     height: 166px;
+    cursor: pointer;
 }
-
 
 .reset {
     background-color: var(--color-set);
-    width: 80px;
-    height:40px;
+    width: 130px;
+    height:50px;
     border-radius: 5px;
-    font-size: 1em;
+    border: 1px solid black;
+    font-size: 1.3em;
     margin-bottom: 10px;
 }
 
@@ -79,6 +87,6 @@ header h3 {
     visibility: hidden;
 }
 
-.show {
-    visibility: visible;
+.win {
+    background-color: greenyellow;
 }
