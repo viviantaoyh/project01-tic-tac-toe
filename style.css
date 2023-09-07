@@ -5,6 +5,7 @@
 :root {
     --color: #fff5cf;
     --color-set: pink;
+    --color-highlight: greenyellow;
     --font-size: 25px;
 }
 
@@ -86,8 +87,8 @@ h3 {
     font-family: 'New Rocker', cursive;
 }
 
-.reset {
-    background-color: greenyellow;
+.nextRound {
+    background-color: var(--color-highlight);
     width: 180px;
     height: 60px;
     border-radius: 5px;
@@ -97,10 +98,21 @@ h3 {
     font-family: 'New Rocker', cursive;
 }
 
+.resetScore {
+    background-color: var(--color-highlight);
+    width: 200px;
+    height: 60px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 1.3em;
+    margin: 70px 0px 10px 20px;
+    font-family: 'New Rocker', cursive;
+}
+
 .hide {
     visibility: hidden;
 }
 
 .win {
-    background-color: greenyellow;
+    background-color: var(--color-highlight);
 }

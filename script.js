@@ -4,13 +4,14 @@ console.log('tic-tac-toe')
 
 const buttons = document.querySelectorAll('.grid-wrapper .btn')
 const congratsMessage = document.querySelector('.congrats');
-const resetBtn = document.querySelector('.reset');
+const nextBtn = document.querySelector('.nextRound');
 const counterO = document.querySelector('.count-O');
 const counterTie = document.querySelector('.count-tie');
 const counterX = document.querySelector('.count-X');
 const roundCounter = document.querySelector('.rounds span')
 const playersTurn = document.querySelector('.turn');
 const turnMessage = document.querySelector('h3')
+const resetGameBtn = document.querySelector('.resetScore')
 
 let currentPlayer = 'O'; // Start with player 'O'.
 let picks = 0; //Track number of picks to detect a tie
@@ -18,7 +19,7 @@ let winCountO = 0;
 let tieCount = 0;
 let winCountX = 0;
 let rounds = 1; 
-let gameWon = false; //keep track of game status
+let gameOver = false; //keep track of game status
 
 
 // Event Listeners ============================================
@@ -27,16 +28,22 @@ buttons.forEach(function(button){
     button.addEventListener('click', handleClick);
 })
 
-resetBtn.addEventListener('click', handleReset);
+nextBtn.addEventListener('click', handleNextRound);
+
+resetGameBtn.addEventListener('click', handleReset);
 
 
 // Event Handlers =============================================
 
-// Execute when a box is clicked
+// Execute when a cell is clicked
 function handleClick(event){
+    
+    // Exit the function if the game has already been won.
+    if (gameOver) return;
+
     let clickedBtn = event.target;
 
-    // If empty, mark the box with current player's symbol.
+    // If empty, mark the cell with current player's symbol.
    if (clickedBtn.innerHTML === ''){
         clickedBtn.innerHTML = currentPlayer;
         picks++;
@@ -44,20 +51,26 @@ function handleClick(event){
         // Add class to trigger the animation
         clickedBtn.classList.add('animate__animated', 'animate__flipInY');
 
-        // Display restart option
-        resetBtn.classList.remove('hide');
+        // Display next round and reset option
+        nextBtn.classList.remove('hide');
+        resetGameBtn.classList.remove('hide');
         
         // Check if the current player has won.
         hasPlayerWon(currentPlayer);
 
         // If no one has won and 9 picks has been made, it's a tie.
-        if (!gameWon && picks === 9){
+        if (!gameOver && picks === 9){
             congratsMessage.innerHTML = `It's a tie!`;
             congratsMessage.classList.remove('hide');
             turnMessage.classList.add('hide');
             tieCount++;
             counterTie.innerHTML = tieCount;
-            resetBtn.classList.add('animate__animated', 'animate__heartBeat');
+            buttons.forEach(function(button){
+                button.disabled = true;
+            });
+            nextBtn.classList.add('animate__animated', 'animate__heartBeat');
+            gameOver = true;
+            return;
         }
 
         // Then switch player
@@ -72,6 +85,39 @@ function handleClick(event){
     }
 }
 
+
+// Execute when the next round button is clicked
+function handleNextRound(){
+
+    // Enable buttons
+    // Remove the animation and color on the buttons
+    buttons.forEach(function(button){
+        button.disabled = false;
+        button.innerHTML = '';
+        button.classList.remove('animate__animated', 'animate__flipInY');
+        button.classList.remove('win');
+    })
+
+    // Reset messages and counters to their initial state
+    picks = 0;
+    currentPlayer = 'O';
+    gameOver = false;
+    playersTurn.innerHTML = 'O';
+    turnMessage.classList.remove('hide');
+    congratsMessage.classList.add('hide');
+
+    // Update round counts
+    rounds++;
+    roundCounter.innerHTML = rounds;
+
+    // Disable the nextRound button
+    nextBtn.classList.remove('animate__animated', 'animate__heartBeat');
+    nextBtn.classList.add('hide');
+
+    // Disable the reset button
+    resetGameBtn.classList.add('hide');
+
+}
 
 // Execute when the reset button is clicked
 function handleReset(){
@@ -88,18 +134,27 @@ function handleReset(){
     // Reset messages and counters to their initial state
     picks = 0;
     currentPlayer = 'O';
-    gameWon = false;
+    gameOver = false;
     playersTurn.innerHTML = 'O';
     turnMessage.classList.remove('hide');
     congratsMessage.classList.add('hide');
 
-    // Update round counts
-    rounds++;
+    // Reset rounds and scores
+    rounds = 1;
     roundCounter.innerHTML = rounds;
+    winCountO = 0;
+    counterO.innerHTML = winCountO;
+    tieCount = 0;
+    counterTie.innerHTML = tieCount;
+    winCountX = 0;
+    counterX.innerHTML = winCountX;
+
+    // Disable the nextRound button
+    nextBtn.classList.remove('animate__animated', 'animate__heartBeat');
+    nextBtn.classList.add('hide');
 
     // Disable the reset button
-    resetBtn.classList.remove('animate__animated', 'animate__heartBeat');
-    resetBtn.classList.add('hide');
+    resetGameBtn.classList.add('hide');
 
 }
 
@@ -130,19 +185,19 @@ function hasPlayerWon(player) {
         if (buttons[winMatch[0]].innerHTML === player &&
             buttons[winMatch[1]].innerHTML === player &&
             buttons[winMatch[2]].innerHTML === player) {
-
+                
             // Change background color to highlight win combo
             winMatch.forEach(function(i){
                 buttons[i].classList.add('win');
-            })
-        
+            });
+                
             // Display win message when a player wins
             congratsMessage.innerHTML = `Congrats, Player ${player} wins!`;
             congratsMessage.classList.remove('hide');
-
+                
             // Hide turn message
             turnMessage.classList.add('hide');
-
+                
             // Update win counter
             if (player === 'O'){
                 winCountO++;
@@ -150,18 +205,18 @@ function hasPlayerWon(player) {
             } else if (player === 'X'){
                 winCountX++;
                 counterX.innerHTML = winCountX;
-            }
-
+            };
+                
             // Stop further clicks after win
             buttons.forEach(function(button){
                 button.disabled = true;
-            })
+            });
 
             // Prompt the players to play again
-            resetBtn.classList.add('animate__animated', 'animate__heartBeat');
-
+            nextBtn.classList.add('animate__animated', 'animate__heartBeat');
+                
             // Update game status to avoid tie message when player won on the last move.
-            gameWon = true;
+            gameOver = true;
         }
     }
 }
