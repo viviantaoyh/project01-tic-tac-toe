@@ -51,7 +51,7 @@ function handleClick(event){
         // Add class to trigger the animation
         clickedBtn.classList.add('animate__animated', 'animate__flipInY');
 
-        // Display next round and reset option
+        // Display next round and reset options
         nextBtn.classList.remove('hide');
         resetGameBtn.classList.remove('hide');
         
@@ -116,7 +116,6 @@ function handleNextRound(){
 
     // Disable the reset button
     resetGameBtn.classList.add('hide');
-
 }
 
 // Execute when the reset button is clicked
@@ -155,17 +154,10 @@ function handleReset(){
 
     // Disable the reset button
     resetGameBtn.classList.add('hide');
-
 }
 
 
-// To visualise the grid:
-// let grid (/buttons) = [
-//     [0, 1, 2],  
-//     [3, 4, 5],  
-//     [6, 7, 8]
-// ]
-
+// Define winning combinations
 let winCombinations = [
     [0, 1, 2],  // Horizontal win: top row
     [3, 4, 5],  // Horizontal win: middle row

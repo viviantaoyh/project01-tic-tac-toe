@@ -89,7 +89,7 @@ h3 {
 
 .nextRound {
     background-color: var(--color-highlight);
-    width: 180px;
+    width: 200px;
     height: 60px;
     border-radius: 5px;
     border: 1px solid black;
