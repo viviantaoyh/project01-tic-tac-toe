@@ -215,7 +215,7 @@ function hasPlayerWon(player) {
             buttons.forEach(function(button){
                 button.disabled = true;
             });
-
+            
             // Prompt the players to play again
             nextBtn.classList.add('animate__animated', 'animate__heartBeat');
                 

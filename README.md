@@ -18,7 +18,7 @@ Hey there! Welcome to my first ever project 'Tic-Tac-Toe'~
 8. The game ends when either someone gets three in a row, or all squares are filled and it's a draw.
 9. You'll see a message pop up telling you who won, or if it's a tie.
 10. Want another round? Just hit the "Next Round" button.
-11. The first player switches with each new round.
+11. The starting player switches with each new round.
 12. If you ever want to reset everything and play from scratch, press the "Reset Scores" button.
 13. Have fun and good luck to both players!
 
@@ -34,10 +34,12 @@ Here are the milestones I aimed for to achieve a smooth gameplay:
 7. Highlight the winning combination by changing their background color
 8. At the conclusion of the game, display a notification message indicating the outcome.
 9. Prompt the players to start a new round.
-10. Keep track of the game rounds and introduce a score counter.
-11. Come up with a theme and style the page in line with it.
-12. Incorporate animations for headline logo and buttons.
-13. Add a “Reset Scores” button, allowing players to reset both the scores and the board without reloading the page.
+10. Switch starting player in each round.
+11. Keep track of the game rounds and introduce a score counter.
+12. Come up with a theme and style the page in line with it.
+13. Incorporate animations for headline logo and buttons.
+14. Add a “Reset Scores” button, allowing players to reset both the scores and the board without reloading the page.
+
 
 ## 🏆 Reflecting on My  Coding Journey 
 
@@ -178,7 +180,7 @@ This entire process granted me a newfound appreciation for the tenacity and pati
 1. HTML, CSS, JavaScript
 2. Animations: https://animate.style/
 
-## Bugs To Fix
+## 🌈 Bugs To Fix
 
 ### The Initial Hiccup:
 
