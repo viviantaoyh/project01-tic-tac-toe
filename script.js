@@ -14,6 +14,7 @@ const turnMessage = document.querySelector('h3')
 const resetGameBtn = document.querySelector('.resetScore')
 
 let currentPlayer = 'O'; // Start with player 'O'.
+let startWithX = false; //keep track of starting player.
 let picks = 0; //Track number of picks to detect a tie
 let winCountO = 0;
 let tieCount = 0;
@@ -109,6 +110,17 @@ function handleNextRound(){
     // Update round counts
     rounds++;
     roundCounter.innerHTML = rounds;
+
+    // Switch starting player each round
+    if (startWithX) {
+        currentPlayer = 'O';
+        playersTurn.innerHTML = 'O';
+        startWithX = false;
+    } else {
+        currentPlayer = 'X';
+        playersTurn.innerHTML = 'X'; 
+        startWithX = true;
+    }
 
     // Disable the nextRound button
     nextBtn.classList.remove('animate__animated', 'animate__heartBeat');

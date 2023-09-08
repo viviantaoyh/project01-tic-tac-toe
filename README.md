@@ -1,26 +1,26 @@
 # 🌟 Tic-Tac-Toe 🌟
-Hey there! Welcome to my first ever project 'Tic-Tac-Toe'.
+Hey there! Welcome to my first ever project 'Tic-Tac-Toe'~
 
-📢 Tools involved: HTML, CSS, and JavaScript
+📢 Tools used: HTML, CSS, and JavaScript
 
-[Click here](https://viviantaoyh.github.io/tic-tac-toe/) to see my live project!
+💎 [Click here](https://viviantaoyh.github.io/tic-tac-toe/) to see my live project!
 
 ![](/Tic-Tac-Toe3.png)
 
 ## 🎮 Game Instructions 
-1. The game board consists of a 3x3 grid.
+1. There's a grid of 3x3 squares for the game.
 2. Player 'O' starts the game.
-3. Click on any empty cell in the grid to make your move.
-4. After every turn, the player's marker (either 'O' or 'X') will be displayed in the selected cell.
-5. The game will automatically switch turns between 'O' and 'X'. The display above the board will indicate whose turn is next.
-6. Once a cell has been selected, it cannot be clicked again.
-7. The objective is to get three of your markers (either 'O's or 'X's) in a row, column, or diagonal.
-8. The game concludes when one player has three in a row or all cells are filled without a winner, resulting in a tie.
-9. When a player wins or the game ties, a pop-up message will reveal the game's result.
-10. Click on the "Next Round" button to enter the next round.
-11. At any point during the game, if you wish to start over, simply press the "Reset Scores" button. This will clear the board and scores, allowing a fresh start.
-12. Enjoy the game and may the best player win! 
-
+3. Pick an empty square and click on it for your turn.
+4. Once clicked, your mark ('O' or 'X') will show in that square.
+5. The game takes turns between 'O' and 'X'. You'll see above the board who's up next.
+6. After choosing a square, you can't change it.
+7. Try to line up three of your marks (all 'O's or all 'X's) horizontally, vertically, or diagonally.
+8. The game ends when either someone gets three in a row, or all squares are filled and it's a draw.
+9. You'll see a message pop up telling you who won, or if it's a tie.
+10. Want another round? Just hit the "Next Round" button.
+11. The first player switches with each new round.
+12. If you ever want to reset everything and play from scratch, press the "Reset Scores" button.
+13. Have fun and good luck to both players!
 
 ## 🎯 Milestones 
 Here are the milestones I aimed for to achieve a smooth gameplay:
@@ -49,7 +49,7 @@ At the beginning, I sketched a simple game design using HTML. I drew an outline 
 
 ### 🚀 Problem Solving 
 
-As a budding coder, the journey of creating a tic-tac-toe game using HTML, CSS, and JS was riddled with challenges. However, these roadblocks only made my learning experience richer. I'd like to share some of the challenges I faced and the insights I gained from it:
+As a budding coder, the journey of creating a tic-tac-toe game using HTML, CSS, and JS was riddled with challenges. However, these roadblocks only made my learning experience richer. I'd like to share five of the challenges I faced and the insights I gained from it:
 
 
 ### Problem 1: Deciphering the Win Logic ♔
@@ -108,8 +108,31 @@ turnMessage.classList.add('hide');
 ```
 
 ---
+### Problem 3: Tie-Check Bug 🚫
 
-### Problem 3: Styling Puzzle ♨️
+Upon further reflection on the game's logic, I recognized an oversight in how I approached the tie scenario. My assumption was that if all 9 buttons were clicked, it would automatically be a tie. But, this logic failed in cases where the last move results in a win. Instead of celebrating the victory, the game would erroneously announce a tie.
+
+This error occurred due to the sequence of my code checks. Once a marker (X or O) was placed, my code would first verify a win via the hasPlayerWon function and then, immediately, check for a tie scenario. Without considering the possibility of a last-move win, my logic was flawed.
+
+#### Solution:
+
+To fix this, I introduced a gameOver variable to track the game's status:
+1. I added the gameOver variable to the list of global variables.
+2. I then updated the hasPlayerWon function such that if a win condition is met, the gameOver variable is set to true.
+3. I then adjusted the tie-check to consider the gameOver flag before making a tie determination.
+4. Finally, to ensure a fresh start for new rounds or game resets, the gameOver flag was reset in both handleReset and handleNextRound functions.
+```
+// Check if the current player has won.
+    hasPlayerWon(currentPlayer);
+
+// If no one has won and 9 picks has been made, it's a tie.
+    if (!gameOver && picks === 9){
+        congratsMessage.innerHTML = `It's a tie!`;
+```
+
+---
+
+### Problem 4: Styling Puzzle ♨️
 
 In this interactive game, players click buttons frequently. But a frustrating issue cropped up: every time a button is clicked within the .grid-wrapper container, it would weirdly grow or shrink. This inconsistency made the game play feel a bit off.
 
@@ -137,7 +160,7 @@ By assigning these sizes to the .btn class in the CSS, I made sure each button r
 
 ---
 
-### Problem 4: The Domino Effect of a Simple Button 😭
+### Problem 5: The Domino Effect of a Simple Button 😭
 
 You'd think adding a new button would be a piece of cake. Not quite, especially given the way my code was structured at the time. On sharing my preliminary game draft with my tutor, she suggested incorporating a 'reset score' button, which would reset the scores and the board without the need for a page reload. Sounds straightforward, right? But in reality, it became a considerable task due to the intertwined nature of the functions in my code.
 
@@ -155,13 +178,40 @@ This entire process granted me a newfound appreciation for the tenacity and pati
 1. HTML, CSS, JavaScript
 2. Animations: https://animate.style/
 
+## Bugs To Fix
+
+### The Initial Hiccup:
+
+In the first version of the game, Player O always got the first turn. This repetitive start was a tad unfair, giving Player O a continuous upper hand in setting the game's pace.
+
+### My Approach:
+
+I tried to change things up by introducing a mechanism to alternate the starting player for each round. By implementing a new variable, startWithX, I was able to track and switch the starting player dynamically:
+```
+// Switch starting player each round
+if (startWithX) {
+    currentPlayer = 'O';
+    playersTurn.innerHTML = 'O';
+    startWithX = false;
+} else {
+    currentPlayer = 'X';
+    playersTurn.innerHTML = 'X'; 
+    startWithX = true;
+}
+```
+But I noticed a problem. Every time the game was reseted, or if the webpage was refreshed, Player O was back to starting first.
+
+### Future Fix:
+
+Reflecting upon this, I believe adopting a 'token selection' method could offer a more elegant solution. This approach would allow the players to select their preferred token (X or O) at the outset. The chosen token would then make the first move. When resetting the game, players would be presented with the choice anew, allowing them to decide afresh who initiates the round. 
+
 
 ## ✨ Key Learnings
 
 If I could start over, there are a few big things I've learned. First, planning ahead saves a lot of time and headache. I faced challenges like making buttons behave correctly and adjusting my code to add new features. These issues showed me the importance of building a game with future changes in mind. Clear notes and organized code make everything easier. For next time, I'd focus on making simple, clear code that's easy to adjust later on. In short, good prep work is just as important as the actual coding!
 
 
-## ✅ Future features
+## ✅ Future Features
 
 1. Incorporate engaging button click sounds to enhance interactivity.
 2. Optimize the game for various devices, such as tablets and phones.
@@ -169,3 +219,4 @@ If I could start over, there are a few big things I've learned. First, planning 
 4. Enhance backgrounds and texts to be more dynamic and visually appealling.
 5. Create a single player mode
 6. Allow players to customize their token (X, O, name, picture, avatar etc)
+7. Move the shared logic in both 'handleNextRound' and 'handleReset' functions to a separate function called 'resetBoard' and call it from both handlers to minimize redundancy and improve readbility.
