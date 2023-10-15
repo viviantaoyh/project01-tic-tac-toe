@@ -3,7 +3,7 @@ Hey there! Welcome to my first ever project 'Tic-Tac-Toe'~
 
 📢 Tools used: HTML, CSS, and JavaScript
 
-💎 [Click here](https://viviantaoyh.github.io/tic-tac-toe/) to see my live project!
+💎 [Click here](https://viviantaoyh.github.io/project01-tic-tac-toe/) to see my live project!
 
 ![](/Tic-Tac-Toe3.png)
 
